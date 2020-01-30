@@ -1,0 +1,40 @@
+body{
+    background-color: wheat;
+}
+.container{
+    margin: 10% auto;
+    width: 80%;
+    background-color: yellowgreen;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    font-family: fantasy;
+}
+
+.btn-style{
+   
+    text-align: center;
+}
+
+.btn{
+border:1px solid;
+padding: 5px 10px;
+border-radius: 5px;
+font-size: medium;
+
+}
+
+#question{
+height: 50px;
+background-color:whitesmoke;
+border: 1px solid;
+margin: 10px auto;
+border-radius: 5px;
+font-size: medium;
+text-align: center;
+}
+
+#value{
+    margin-top: 10px;
+}

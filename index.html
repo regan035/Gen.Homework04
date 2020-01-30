@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div class="container">
+        <h1>MATH QUIZ</h1>
+        <h2>Select the answer</h2>
+        <p>Score:<text id="scoreDiv"></text></p>
+        <p>Timer:<text id="timeDiv"></text></p>
+    
+    
+        <div id="question">question</div>
+        <div id="answer-buttons" class="btn-style">
+            <button class="btn" id="A" onclick="checkAnswer('A')">Answer A</button>
+            <button class="btn" id="B" onclick="checkAnswer('B')">Answer B</button>
+            <button class="btn" id="C" onclick="checkAnswer('C')">Answer C</button>
+
+        </div>
+        <div id="value"></div>
+
+    </div>
+    <script>
+        // select elements
+        const question = document.getElementById("question");
+        const answerA = document.getElementById("A");
+        const answerB = document.getElementById("B");
+        const answerC = document.getElementById("C");
+        const timeDiv = document.getElementById("timeDiv");
+
+        const scoreDiv = document.getElementById("scoreDiv");
+        const value = document.getElementById("value");
+    
+
+        // set questions
+        let questions = [
+
+            {
+                question : " What is 2 + 9 ? ",
+                answerA : "11",
+                answerB : "12",
+                answerC : "13",
+                correct : "A"
+            },{
+                question : " What is 21 * 3 ? ",
+                answerA: "61",
+                answerB: "62",
+                answerC: "63",
+                correct: "C"
+            },{
+                question: " What is 25 * 5 ? ",
+                answerA: "124",
+                answerB: "125",
+                answerC: "126",
+                correct: "B"
+            },{
+                question: " What is 64 + 8 ? ",
+                answerA: "71",
+                answerB: "72",
+                answerC: "73",
+                correct: "B"
+            }, {
+                question: " What is 64 - 8 ? ",
+                answerA: "55",
+                answerB: "56",
+                answerC: "73",
+                correct: "B"
+            }
+        ];
+        // create variables
+
+        const lastQuestion = questions.length - 1;
+        let runningQuestion = 0;
+        var score = 0;
+        var timeleft = 16;
+        
+        // set time interval 
+        var questionTime = setInterval(function () {
+            timeleft--;
+            document.getElementById("timeDiv").textContent = timeleft;
+            if (timeleft <= 0){
+                clearInterval(questionTime);
+                alert("Times Out. Your total score is " +score );
+            }
+        }, 1000);
+
+      
+        
+        // render questions
+       function renderQuestion() {
+        let q = questions[runningQuestion];
+
+            question.innerHTML = q.question ;
+            answerA.innerHTML = q.answerA;
+            answerB.innerHTML = q.answerB;
+            answerC.innerHTML = q.answerC;
+
+        
+        };
+        renderQuestion();
+        
+        function checkAnswer(answer){
+            if( answer === questions[runningQuestion].correct){
+                
+                value.innerHTML = "Correct";
+                score += 20;
+                scoreDiv.innerHTML = score;
+            }else{
+                value.innerHTML = "Incorrect";
+            }
+            if(runningQuestion < lastQuestion){
+                runningQuestion++;
+                renderQuestion();
+            }else {
+                alert("You have completed the quiz. Your total score is " + score);
+            }
+            
+        }
+
+      
+    
+    </script>
+</body>
+</html>
